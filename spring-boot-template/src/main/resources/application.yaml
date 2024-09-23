@@ -1,7 +1,9 @@
 server:
-  port: 8080
+  port: 9898
 
-logging:
-  level:
-    org.springframework.orm.jpa: DEBUG
-    org.springframework.transaction: DEBUG
+spring:
+  rabbitmq:
+    host: localhost  # RabbitMQ host adresi
+    port: 5672       # RabbitMQ varsayılan portu
+    username: guest  # RabbitMQ kullanıcı adı
+    password: guest  # RabbitMQ şifresi
