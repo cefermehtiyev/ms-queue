@@ -1,5 +1,6 @@
 package az.ingress.service;
 
+import az.ingress.queue.PaymentQueueDto;
 import az.ingress.queue.QueueSender;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -7,10 +8,10 @@ import org.springframework.stereotype.Service;
 @Service
 @RequiredArgsConstructor
 public class QueueService {
-    private final QueueSender queueSender;
+    private final QueueSender<PaymentQueueDto>  paymentQueueDtoQueueSender;
 
 
-    public <T> void sendToQueue(String queueName, T data) {
-        queueSender.sendMessagePayment(queueName,data);
+    public  void sendToQueue( PaymentQueueDto data) {
+        paymentQueueDtoQueueSender.sendToQueue(data);
     }
 }

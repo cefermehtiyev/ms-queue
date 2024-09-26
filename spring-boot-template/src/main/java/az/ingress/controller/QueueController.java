@@ -20,8 +20,8 @@ public class QueueController {
     private final QueueService queueService;
 
     @PostMapping
-    public <T> void sendToQueue(@RequestParam String queueName, @RequestBody T data) {
-        queueService.sendToQueue(queueName,data);
+    public void sendToQueue( @RequestBody PaymentQueueDto  data) {
+        queueService.sendToQueue(data);
     }
 
 

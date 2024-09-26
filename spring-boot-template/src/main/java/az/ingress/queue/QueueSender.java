@@ -8,16 +8,9 @@ import org.springframework.stereotype.Component;
 
 import static az.ingress.mapper.factory.ObjectMapperFactory.OBJECT_MAPPER_FACTORY;
 
-@Component
-@RequiredArgsConstructor
-public class QueueSender {
-    private final AmqpTemplate amqpTemplate;
-    private final ObjectMapper objectMapper;
 
-    @SneakyThrows
-    public <T> void sendMessagePayment(String queueName, T payment){
-        amqpTemplate.convertAndSend(queueName,objectMapper.writeValueAsString(payment));
-
-    }
-
+public interface QueueSender<T> {
+    void sendToQueue(T payload);
 }
+
+
